@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="wenjie" content="width=device-width, initial-scale=1.0">
+    <title>纯css制作名侦探柯南</title>
+    <style>
+        body,html {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-image: linear-gradient(-225deg, #5D9FFF 0%, #88DCFF 48%, #6BBBFF 100%);
+        }
+        .main-box {
+            width: 300px;
+            height: 500px;
+            position: relative;
+            margin: 0 auto;
+            padding-top: 77px;
+        }
+        .face {
+            width: 110px;
+            height: 100px;
+            margin: 0 auto;
+            border-bottom-left-radius: 50%;
+            border-top-right-radius: 20% 50%;
+            border-bottom-left-radius: 65%;
+            border-bottom-right-radius: 60%;
+            border-right: 1px solid #333;
+            background: #f0b57f;
+            position: relative;
+        }
+        .face:after {
+            position: absolute;
+            content: '';
+            right: 8px;
+            bottom: -3px;
+            width: 63px;
+            height: 40px;
+            background: #f0b57f; 
+            border-radius: 6px;
+            border-right: 1px solid #333;
+            border-bottom: 1px solid #333;
+            transform: skew(160deg,358deg) rotate(8deg);
+        }
+        .mouth {
+            width: 27px;
+            height: 1px;
+            background: #8c5c32;
+            position: absolute;
+            bottom: 20%;
+            right: 20%;
+            z-index: 1;
+            transform: rotate(-7deg);
+        }
+        .nose {
+            position: absolute;
+            width: 2px;
+            height: 10px;
+            border-radius: 50% 50% 0 0/50% 0;
+            background: #cf9462;
+            border: 1px solid #333;
+            transform: rotate(20deg);
+            z-index: 1;
+            top: 50%;
+            right: 16%;
+        }
+        .eye {
+            width: 26px;
+            height: 28px;
+            border-radius: 50%;
+            z-index: 7;
+            position: absolute;
+            background: #e6e6e7;
+            top: 15%;
+            right: 3%;
+            overflow: hidden;
+            box-shadow: 1px -2px 0 #060f0e ,-2px 2px inset #b8c0cc;
+        }
+        .eye.left {
+            width: 30px;
+            right: unset;
+            left: 11%;
+            top: 26%;
+        }
+        .eye-in {
+            position: absolute;
+            transform: rotate(348deg);
+            width: 15px;
+            height: 20px;
+            background: #5981c2;
+            border-radius: 50%;
+            left: 0;
+            top: 10%;
+            border: 1px solid #333;
+        }
+        .eye.left .eye-in {
+            transform: rotate(0deg);
+            width: 20px;
+            height: 20px;
+        }
+        .eye-in:before {
+            content: '';
+            width: 10px;
+            height: 17px;
+            background: #333;
+            border-radius: 50%;
+            position: absolute;
+            z-index: -1;
+            left: -1px;
+            top: -1px;
+            box-shadow: 3px 2px #3d5993;
+        }
+        .eye-in:after {
+            content: '';
+            width: 1px;
+            height: 14px;
+            background: #7089bc;
+            border-radius: 50%;
+            position: absolute;
+            z-index: 1;
+            left: 1px;
+            top: 1px;
+        }
+        .eye-white {
+            width: 9px;
+            height: 15px;
+            border-radius: 50%;
+            background: #fff;
+            float: right;
+            position: relative;
+        }
+        .eye.left .eye-white {
+            width: 11px;
+            height: 15px;
+            transform: rotate(-10deg);
+        }
+        .eye-white:before {
+            position: absolute;
+            content: '';
+            width: 1px;
+            height: 11px;
+            background: #fff;
+            left: 4px;
+            top: -2px;
+        }
+        .eye.left .eye-white:before {
+            left: -3px;
+        }
+        .eyeglasses {
+            width: 124px;
+            height: 52px;
+            overflow: hidden;
+            position: absolute;
+            top: 15%;
+            left: 0%;
+            z-index: 9;
+            transform: rotate(-10deg);
+        }
+        .eyeglasses-top {
+            background: #333;
+            width: 95px;
+            height: 2px;
+            position: absolute;
+            top: 0;
+            left: 10%;
+        }
+        .eyeglasses-in {
+            width: 50px;
+            height: 47px;
+            border: 1px solid #333;
+            border-top: none;
+            position: absolute;
+            border-radius: 30% 30% 45% 45% /30% 30% 45% 45%;
+            left: 7%;
+            top: -3px;
+            box-shadow: -1px -1px #333,1px -1px #333;
+        }
+        .eyeglasses-in.right {
+            width: 40px;
+            height: 43px;
+            border-radius: 30% 30% 50% 50%/30% 30% 50% 50%;
+            left: unset;
+            right: 7%;
+            top: 0px;
+        }
+        .eyeglasses-in.left:before {
+            content: '';
+            position: absolute;
+            width: 14px;
+            height: 4px;
+            background: #333;
+            border-radius: 40%;
+            top: 37%;
+            left: -29%;
+            z-index: 1;
+            transform: rotate(344deg);
+        }
+        .eyeglasses-in.right:before {
+            content: '';
+            position: absolute;
+            width: 11px;
+            height: 4px;
+            background: #333;
+            border-radius: 24%;
+            top: 24%;
+            left: -31%;
+            z-index: 1;
+            transform: rotate(355deg);
+        }
+        .ear {
+            width: 20px;
+            height: 39px;
+            background: #f0b57f;
+            border: 1px solid #333;
+            border-bottom: none;
+            position: absolute;
+            z-index: 15;
+            top: 56%;
+            left: -3%;
+            border-radius: 50%;
+            transform: skew(52deg,313deg);
+        }
+        .ear:after {
+            content: '';
+            width: 1px;
+            height: 16px;
+            background: #333;
+            position: absolute;
+            top: 61%;
+            left: 32%;
+            transform: rotate(9deg) skew(11deg,70deg);
+        }
+        .ear-in {
+            width: 10px;
+            height: 18px;
+            background: #d4965d;
+            position: absolute;
+            border-radius: 50%;
+            top: 23%;
+            left: 16%;
+            overflow: hidden;
+            transform: rotate(359deg);
+            border-left: 1px solid #333;
+            box-shadow: 0 -1px #333;
+        }
+        .ear-in-box {
+            width: 18px;
+            height: 18px;
+            position: absolute;
+            background: #f0b57f;
+            top: 60%;
+            left: 43%;
+            border-radius: 5px;
+            border: 1px solid #333;
+        }
+        .ear-in-line {
+            width: 18px;
+            height: 18px;
+            margin-left: -9px;
+            margin-top: 1px;
+            border-radius: 50%;
+            border-top: 1px solid #333;
+        }
+        .hair {
+            width: 140px;
+            height: 89px;
+            overflow: hidden;
+            transform: rotate(338deg) skew(358deg,3deg);
+            position: absolute;
+            top: -49%;
+            left: -33%;
+            z-index: 2;
+        }
+        .hair-in {
+            width: 135px;
+            height: 135px;
+            background: #271c16;
+            border-radius: 50%;
+            box-shadow: 0 4px inset #634b41,0 -2px #333;
+            margin-top: 10px;
+            transform: skew(0deg,3deg);
+        }
+        .hair-hidden {
+            width: 123px;
+            height: 100px;
+            border-radius: 50%;
+            z-index: 2;
+            position: absolute;
+            top: 44%;
+            left: 4%;
+            background: #f0b57f;
+            transform: skew(354deg);
+        }
+        .hair-out {
+            width: 0;
+            height: 0;
+            position: absolute;
+            top: 15%;
+            left: -46%;
+            z-index: 1;
+            border-top: 5px solid transparent;
+            border-right: 37px solid #2a1e0e;
+            border-bottom: 5px solid transparent;
+        }
+        .hair-out.bot {
+            top: 93%;
+            left: 10%;
+            z-index: 0;
+            transform: rotate(329deg);
+        }
+        .hair-out2 {
+            width: 0;
+            height: 0;
+            position: absolute;
+            top: -20%;
+            left: -40%;
+            z-index: 1;
+            transform: rotate(321deg);
+            border-top: 16px solid transparent;
+            border-right: 19px solid #2a1e0e;
+            border-bottom: 44px solid transparent;
+        }
+        .hair-line {
+            width: 72px;
+            height: 39px;
+            overflow: hidden;
+            position: absolute;
+            top: -33%;
+            left: 60%;
+            transform: rotate(2deg);
+        }
+        .hair-line-in {
+            position: absolute;
+            content: '';
+            top: 14px;
+            right: 2%;
+            width: 80px;
+            height: 50px;
+            border-radius: 50%;
+            box-shadow: -2px -8px #041428,-4px -13px #5e4d37,-4px -14px #333;
+            transform: rotate(3deg) skew(20deg,358deg);
+        }
+        .hair-line-in2 {
+            position: absolute;
+            content: '';
+            top: 14px;
+            right: 2%;
+            width: 80px;
+            height: 50px;
+            border-radius: 50%;
+            box-shadow: -2px -8px #041428,-4px -13px #5e4d37,-4px -14px #333;
+            transform: rotate(3deg) skew(20deg,358deg);
+        }
+        .hair-line-in3 {
+            position: absolute;
+            content: '';
+            top: 14px;
+            right: 2%;
+            width: 80px;
+            height: 50px;
+            border-radius: 50%;
+            box-shadow: -3px -13px #271a12;
+            transform: rotate(338deg) skew(38deg,8deg);
+        }
+        .hair-line-in4 {
+            position: absolute;
+            content: '';
+            top: 14px;
+            right: 2%;
+            width: 80px;
+            height: 50px;
+            border-radius: 50%;
+            box-shadow: -3px -13px #291c14;
+            transform: rotate(344deg) skew(56deg,341deg);
+        }
+        .hair-line-in5 {
+            position: absolute;
+            content: '';
+            top: 13px;
+            right: -11%;
+            width: 70px;
+            height: 50px;
+            border-radius: 50%;
+            box-shadow: -6px -18px #291c14;
+            transform: rotate(344deg) skew(56deg,341deg);
+        }
+        .hair-line-in6 {
+            position: absolute;
+            content: '';
+            top: 13px;
+            right: 8%;
+            width: 70px;
+            height: 50px;
+            border-radius: 50%;
+            box-shadow: 1px -13px #5d4b3d;
+            transform: rotate(316deg) skew(45deg,6deg);
+        }
+        .hair-line.two {
+            transform: scale(0.5) rotate(308deg);
+            top: -21%;
+            left: 63%;
+        }
+        .hair-line.one {
+            transform: scale(0.5) rotate(308deg);
+            top: -56%;
+            left: 44%;
+        }
+        .hair-line.three {
+            transform: scale(0.7) rotate(39deg);
+            top: -25%;
+            left: 45%;
+            z-index: 9;
+        }
+        .hair-line.four {
+            transform: scale(0.8) rotate(53deg);
+            top: -22%;
+            left: 39%;
+            z-index: 9;
+        }
+        .hair-line.five {
+            transform: scale(0.5) rotate(70deg);
+            top: -22%;
+            left: 28%;
+            z-index: 9;
+        }
+        .hair-line.six {
+            transform: scale(0.5) rotate(95deg);
+            top: 1%;
+            left: -36%;
+            z-index: 9;
+        }
+        .hair-line.seven {
+            transform: scale(1.4) rotate(104deg) rotateX(178deg);
+            top: 18%;
+            left: -22%;
+            z-index: 9;
+        }
+        .hair-line.eight {
+            transform: scale(1.3) rotate(99deg);
+            top: -1%;
+            left: 3%;
+            z-index: 9;
+        }
+        .hair-line.nine {
+            transform: scale(1.4) rotate(125deg) rotateX(178deg);
+            top: 6%;
+            left: -12%;
+            z-index: 9;
+        }
+        .hair-line.ten {
+            transform: scale(1.4) rotate(127deg) rotateX(178deg);
+            top: 5%;
+            left: -5%;
+            z-index: 9;
+        }
+        .hair-line.eleven {
+            transform: scale(0.6) rotate(70deg);
+            top: -4%;
+            left: 28%;
+            z-index: 9;
+        }
+        .hair-line.twelve {
+            transform: scale(0.6) rotate(137deg);
+            top: -15%;
+            left: 0%;
+            z-index: 9;
+        }
+        .hair-line.thirteen {
+            transform: scale(1.2) rotate(27deg);
+            top: -20%;
+            left: 41%;
+            z-index: 9;
+        }
+        .hair-line.fourteen {
+            transform: scale(0.5) rotate(267deg) skew(339deg, 42deg);
+            top: -15%;
+            left: -40%;
+            z-index: 21;
+            width: 74px;
+            height: 26px;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-box">
+        <div class="head">
+            <div class="face">
+                <div class="eye left">
+                    <div class="eye-in">
+                        <div class="eye-white">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="eye">
+                    <div class="eye-in">
+                        <div class="eye-white">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="mouth">
+
+                </div>
+                <div class="nose">
+
+                </div>
+                <div class="eyeglasses">
+                    <div class="eyeglasses-top">
+
+                    </div>
+                    <div class="eyeglasses-in left">
+
+                    </div>
+                    <div class="eyeglasses-in right">
+                        
+                    </div>
+                </div>
+                <div class="ear">
+                    <div class="ear-in">
+                        <div class="ear-in-line"></div>
+                        <div class="ear-in-box"></div>
+                    </div>
+                </div>
+                <div class="hair">
+                    <div class="hair-hidden"></div>
+                    <div class="hair-in"></div>
+                </div>
+                <div class="hair-out"></div>
+                <div class="hair-out2"></div>
+                <div class="hair-out bot"></div>
+                <div class="hair-line">
+                    <div class="hair-line-in"></div>
+                </div>
+                <div class="hair-line one">
+                    <div class="hair-line-in2"></div>
+                </div>
+                <div class="hair-line two">
+                    <div class="hair-line-in"></div>
+                </div>
+                <div class="hair-line three">
+                    <div class="hair-line-in3"></div>
+                </div>
+                <div class="hair-line four">
+                    <div class="hair-line-in3"></div>
+                </div>
+                <div class="hair-line five">
+                    <div class="hair-line-in3"></div>
+                </div>
+                <div class="hair-line six">
+                    <div class="hair-line-in3"></div>
+                </div>
+                <div class="hair-line seven">
+                    <div class="hair-line-in4"></div>
+                </div>
+                <div class="hair-line eight">
+                    <div class="hair-line-in5"></div>
+                </div>
+                <div class="hair-line nine">
+                    <div class="hair-line-in4"></div>
+                </div>
+                <div class="hair-line ten">
+                    <div class="hair-line-in4"></div>
+                </div>
+                <div class="hair-line eleven">
+                    <div class="hair-line-in3"></div>
+                </div>
+                <div class="hair-line twelve">
+                    <div class="hair-line-in3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
